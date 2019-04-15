@@ -4,19 +4,19 @@
         <Layout>
             <Header :style="{position: 'fixed', width: '100%'}">
                 <Menu mode="horizontal" theme="dark" active-name="1">
-                    <div class="layout-logo">腾讯新闻</div>
+                    <router-link tag="a" to="/new" class="layout-logo">腾讯新闻</router-link>
                     <div class="layout-nav">
-                        <MenuItem name="1">
+                        <MenuItem name="1" to="/new">
                             <Icon type="ios-navigate"></Icon>
                             最新
                         </MenuItem>
-                        <MenuItem name="2">
+                        <MenuItem name="2" to="/top">
                             <Icon type="ios-keypad"></Icon>
                             最热
                         </MenuItem>
                     </div>
                     <div class="user-nav">
-                        <MenuItem name="1" to="login">
+                        <MenuItem name="1" to="/login">
                             <Icon type="ios-navigate"></Icon>
                             登录
                         </MenuItem>
@@ -37,7 +37,11 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  mounted() {
+    console.log('ocnfig')
+
+  }
 }
 </script>
 

@@ -8,5 +8,6 @@ const envConfig = require(`./${m[process.env.NODE_ENV || 'production']}`)
 
 // 合并环境配置和基础配置
 module.exports = Object.assign({
-  port: 3000
+  port: 3000,
+  mongodb: 'mongodb://localhost:27017/hackernews'
 }, envConfig)

@@ -1,11 +1,15 @@
 <template>
   <div>
-    登录
+    登
   </div>
 </template>
 <script>
-export default {
+import { mapGetters } from 'vuex'
 
+export default {
+  computed: {
+
+  }
 }
 </script>
 
