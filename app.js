@@ -4,6 +4,8 @@ const bodyParser = require('koa-bodyparser') // 根据请求类型解析请求�
 const koaLogger = require('koa-logger') // 打印请求响应基础流水日志
 const koaJson = require('koa-json') // 响应为json时 打印响应的json
 const db = require('./server/middleware/db')
+const api = require('./server/routes/api')
+const page = require('./server/routes/page')
 
 // 实例化 Koa
 const app = new Koa()
@@ -24,7 +26,8 @@ app.use(koaJson({ pretty: false, param: 'pretty' })) // 美化json响应，这�
 app.use(db)
 
 // 业务路由
-api.routes(app)
+app.use(api.routes())
+app.use(page.routes())
 
 // listen 本质上调用的 Server.listen，同时返回的也是Server本身。 listen可以传入一个回调函数，在listening事件触发时调用, listening触发后可以读取server对象获取监听的信息。
 const server = app.listen(config.port, (err) => {

@@ -1,5 +1,10 @@
-const login = require('./login')
+const KoaRouter = require('koa-router')
+const loginController = require('../../controller/login')
 
-module.exports = function(app) {
-  app.use(login.routes())
-}
+
+const router = new KoaRouter()
+
+router.get('/user/:id', loginController.getUserId)
+
+
+module.exports = router
