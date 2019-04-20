@@ -1,5 +1,8 @@
 const config = require('./server/config')
+const path = require('path')
 const Koa = require('koa')
+const static = require('koa-static')
+const history = require('koa-history-api-fallback')
 const bodyParser = require('koa-bodyparser') // 根据请求类型解析请求体
 const koaLogger = require('koa-logger') // 打印请求响应基础流水日志
 const koaJson = require('koa-json') // 响应为json时 打印响应的json
@@ -24,6 +27,10 @@ app.use(bodyParser())
 app.use(koaLogger())
 app.use(koaJson({ pretty: false, param: 'pretty' })) // 美化json响应，这样浏览器就不用装什么json美化插件了。(不过建议还是装吧)
 app.use(db)
+app.use(history({ verbose: true }))
+app.use(static(
+  path.resolve(__dirname, './dist')
+))
 
 // 业务路由
 app.use(api.routes())

@@ -7,17 +7,22 @@
   "scripts": {
     "dev:server": "nodemon app.js",
     "dev:client": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start": "node ./app.js",
     "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "iview": "^3.4.0-rc.1",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
+    "koa-history-api-fallback": "^0.2.0",
     "koa-json": "^2.0.2",
+    "koa-jwt": "^3.5.1",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "mongoose": "^5.5.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
@@ -62,7 +67,7 @@
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
+    "webpack-dev-server": "^2.11.5",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

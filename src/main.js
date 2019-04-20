@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import iView from 'iview'
-import axios from 'axios'
+import request from './utils/request'
 import store from './store'
 import { sync } from 'vuex-router-sync'
 import * as filters from './utils/filters'
@@ -10,7 +10,7 @@ import 'iview/dist/styles/iview.css'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$http = axios
+Vue.prototype.$http = request
 Vue.use(iView)
 sync(store, router)
 

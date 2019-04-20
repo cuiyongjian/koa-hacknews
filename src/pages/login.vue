@@ -1,6 +1,7 @@
 <template>
   <div class="login-wrapper">
     <h2>欢迎登录腾讯新闻</h2>
+    <p style="color: red;">{{errMsg}}</p>
     <Form :model="formItem">
       <FormItem prop="username">
           <Input v-model="formItem.username" placeholder="请输入用户名..."></Input>
@@ -24,16 +25,23 @@ export default {
       formItem: {
         username: '',
         password: ''
-      }
+      },
+      errMsg: ''
     }
   },
   methods: {
     handleReset() {
 
     },
-    handleSubmit() {
-      // 我们需要刷新时也有登录态，因此我们的token要写到sessionStorage/cookie当中（不能放在store里)
-
+    async handleSubmit() {
+      const rel = await this.$store.dispatch('user/login', this.formItem)
+      if (rel.status === 0) {
+        // 登录成功
+        this.$router.push('/profile')
+      }
+      else {
+        this.errMsg = rel.msg
+      }
     }
   }
 }

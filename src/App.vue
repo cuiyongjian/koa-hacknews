@@ -16,13 +16,13 @@
                         </MenuItem>
                     </div>
                     <div class="user-nav">
-                        <MenuItem name="1" to="/login">
+                        <MenuItem name="1" to="/login" v-if="!isLogin">
                             <Icon type="ios-navigate"></Icon>
                             登录
                         </MenuItem>
-                        <router-link to="profile">
+                        <router-link to="profile" v-else>
                           <Avatar icon="ios-person" size="default" />
-                          <span style="color: white; margin-left: 8px; cursor: pointer;">崔永键</span>
+                          <span style="color: white; margin-left: 8px; cursor: pointer;">{{userInfo.username}}</span>
                         </router-link>
                     </div>
                 </Menu>
@@ -36,11 +36,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'App',
-  mounted() {
-    console.log('ocnfig')
-
+  computed: {
+    ...mapGetters('user', ['userInfo', 'isLogin'])
   }
 }
 </script>
